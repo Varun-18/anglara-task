@@ -1,5 +1,7 @@
 {
-  "watch": ["src/**/*.ts"],
+  "watch": [
+    "src/**/*.ts"
+  ],
   "ext": ".ts, .js",
-  "exec": "ts-node -r tsconfig-paths/register ./src/server.ts"
+  "exec": "ts-node -r tsconfig-paths/register ./src/index.ts"
 }

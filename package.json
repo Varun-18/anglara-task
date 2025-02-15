@@ -2,13 +2,13 @@
   "name": "anglara-task",
   "version": "1.0.0",
   "description": "",
-  "main": "/src/server.ts",
+  "main": "/src/index.ts",
   "scripts": {
     "dev": "nodemon",
-    "build": "rimraf dist && tsc && tsc-alias && npm run copyfiles",
-    "copyfiles": "copyfiles -O -u 1 src/views/**/* dist",
+    "build": "rimraf api && tsc && tsc-alias && npm run copyfiles",
+    "copyfiles": "copyfiles -O -u 1 src/views/**/* api",
     "lint": "prettier --write ./src &&  eslint ./src --fix",
-    "start": "node dist/server.js",
+    "start": "node api/index.js",
     "test": "jest"
   },
   "keywords": [],
