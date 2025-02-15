@@ -14,7 +14,9 @@ const regsisterUser = async (req: Request, res: Response) => {
     const existingUser = await checkExistingUser(email, false);
 
     if (existingUser) {
-      res.status(400).json({ message: RES_MESSAGES.BAD_REQUEST });
+      res
+        .status(STATUS_CODES.CONFLICT)
+        .json({ message: 'Email already exists' });
       return;
     }
 

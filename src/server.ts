@@ -110,3 +110,5 @@ const connectToDatabase = async (port: string | number) => {
 app.listen(process.env.PORT || 5000, async () => {
   connectToDatabase(process.env.PORT || 5000);
 });
+
+export default app;
