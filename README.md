@@ -222,5 +222,3 @@ Here’s a summary of the main API endpoints available in the application:
 Contributions are welcome! If you have suggestions for improvements or find bugs, please open an issue or submit a pull request.
 
 ---
-
-Feel free to customize this README further to fit your project's specific needs!
