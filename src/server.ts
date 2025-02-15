@@ -96,9 +96,6 @@ app.use(limiter);
  */
 app.use('/', router);
 
-/**
- * TODO : change urban essentails url
- */
 const connectToDatabase = async (port: string | number) => {
   try {
     await mongoose.connect(process.env.MONGO_URI || '');

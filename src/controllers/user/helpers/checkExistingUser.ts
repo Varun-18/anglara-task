@@ -14,7 +14,7 @@ export const checkExistingUser = async (
 
     return null;
   } catch (error) {
-    console.log('🚀 ~ checkExistingUser ~ error:', error);
+    console.log('🚀 ~ error:', error);
     return null;
   }
 };
