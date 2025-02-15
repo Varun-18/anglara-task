@@ -13,3 +13,5 @@ httpServer.listen(port, () => {
     `Server is running on ${process.env.MODE === 'prod' ? 'https://anglara-task.onrender.com' : `http://localhost:${port}`}`
   );
 });
+
+export default httpServer;

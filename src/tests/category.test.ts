@@ -3,7 +3,7 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 import request from 'supertest';
-import app from '../server';
+import server from '../index';
 import { CategoryModel, User } from 'models';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -27,7 +27,7 @@ beforeAll(async () => {
   });
   await user.save();
 
-  const loginResponse = await request(app)
+  const loginResponse = await request(server)
     .post('/user/login')
     .send({ email: 'test@example.com', password: 'password' });
 
@@ -45,7 +45,7 @@ describe('Category', () => {
   });
 
   it('should create a category with default status as active', async () => {
-    const res = await request(app)
+    const res = await request(server)
       .post('/category')
       .set('Cookie', authCookie)
       .send({ name: 'Electronics' })
@@ -55,7 +55,7 @@ describe('Category', () => {
   });
 
   it('should update the name of category', async () => {
-    const res1 = await request(app)
+    const res1 = await request(server)
       .post('/category')
       .set('Cookie', authCookie)
       .send({ name: 'Electronics' })
@@ -63,7 +63,7 @@ describe('Category', () => {
 
     expect(res1.body.newCategory.status).toBe('active');
 
-    const res = await request(app)
+    const res = await request(server)
       .put('/category')
       .set('Cookie', authCookie)
       .send({ id: res1.body.newCategory._id, name: 'Electronics updated' })
@@ -73,7 +73,7 @@ describe('Category', () => {
   });
 
   it('should update the status of category form active to inactive', async () => {
-    const res1 = await request(app)
+    const res1 = await request(server)
       .post('/category')
       .set('Cookie', authCookie)
       .send({ name: 'Electronics' })
@@ -81,7 +81,7 @@ describe('Category', () => {
 
     expect(res1.body.newCategory.status).toBe('active');
 
-    const response = await request(app)
+    const response = await request(server)
       .put('/category')
       .set('Cookie', authCookie)
       .send({ id: res1.body.newCategory._id, status: 'inactive' })
@@ -91,7 +91,7 @@ describe('Category', () => {
   });
 
   it('should delete category', async () => {
-    const res1 = await request(app)
+    const res1 = await request(server)
       .post('/category')
       .set('Cookie', authCookie)
       .send({ name: 'Electronics' })
@@ -99,7 +99,7 @@ describe('Category', () => {
 
     expect(res1.body.newCategory.status).toBe('active');
 
-    const res = await request(app)
+    const res = await request(server)
       .delete(`/category/${res1.body.newCategory._id}`)
       .set('Cookie', authCookie)
       .expect(200);
@@ -108,7 +108,7 @@ describe('Category', () => {
   });
 
   it('should create a category and get the response for listing all categories', async () => {
-    const res1 = await request(app)
+    const res1 = await request(server)
       .post('/category')
       .set('Cookie', authCookie)
       .send({ name: 'Electronics' })
@@ -116,7 +116,7 @@ describe('Category', () => {
 
     expect(res1.body.newCategory.status).toBe('active');
 
-    const res = await request(app)
+    const res = await request(server)
       .get('/category')
       .set('Cookie', authCookie)
       .expect(200);

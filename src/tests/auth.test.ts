@@ -3,7 +3,7 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 import request from 'supertest';
-import app from '../server';
+import server from '../index';
 import { User } from 'models';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -28,7 +28,7 @@ describe('Authentication', () => {
   });
 
   it('should register a new user successfully', async () => {
-    const response = await request(app)
+    const response = await request(server)
       .post('/user/register')
       .send({ name: 'test', email: 'test@example.com', password: 'password' });
 
@@ -47,7 +47,7 @@ describe('Authentication', () => {
   });
 
   it('should return 400 for missing email', async () => {
-    const response = await request(app)
+    const response = await request(server)
       .post('/user/register')
       .send({ name: 'test', password: 'password' });
 
@@ -56,7 +56,7 @@ describe('Authentication', () => {
   });
 
   it('should return 400 for missing password', async () => {
-    const response = await request(app)
+    const response = await request(server)
       .post('/user/register')
       .send({ name: 'test', email: 'test@example.com' });
 
@@ -72,7 +72,7 @@ describe('Authentication', () => {
     });
     await user.save();
 
-    const response = await request(app)
+    const response = await request(server)
       .post('/user/register')
       .send({ name: 'test', email: 'test@example.com', password: 'password' });
 
@@ -88,7 +88,7 @@ describe('Authentication', () => {
     });
     await user.save();
 
-    const response = await request(app)
+    const response = await request(server)
       .post('/user/login')
       .send({ email: 'test@example.com', password: 'wrongpassword' });
 
@@ -106,7 +106,7 @@ describe('Authentication', () => {
     });
     await user.save();
 
-    const response = await request(app)
+    const response = await request(server)
       .post('/user/login')
       .send({ email: 'test@example.com', password: 'password' });
 
