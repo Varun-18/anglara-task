@@ -9,6 +9,7 @@
     "copyfiles": "copyfiles -O -u 1 src/views/**/* api",
     "lint": "prettier --write ./src &&  eslint ./src --fix",
     "start": "node api/index.js",
+    "vercel-build": "tsc && tsc-alias && npm run copyfiles",
     "test": "jest"
   },
   "keywords": [],
