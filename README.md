@@ -5,7 +5,9 @@ Welcome to the Anglara Task project! This is a Node.js application built with Ex
 ## Deployment
 The project has been successfully deployed on Render. Please note that the deployment is done on a free instance, which means the initial request can take up to 50 seconds for the instance to boot up and start running.
 deployed url : https://anglara-task.onrender.com
-[Postman collection](https://www.postman.com/telecoms-candidate-75479556/workspace/anglara/collection/28422425-abbaf6d4-d6e4-4e06-9315-f2579d62c2c1?action=share&creator=28422425&active-environment=28422425-06d94ac3-eb40-418f-8b94-e9f903911084)
+
+## Postman Collection
+[Anglara Collection & Env](https://www.postman.com/telecoms-candidate-75479556/workspace/anglara/collection/28422425-abbaf6d4-d6e4-4e06-9315-f2579d62c2c1?action=share&creator=28422425&active-environment=28422425-06d94ac3-eb40-418f-8b94-e9f903911084)
 
 ## Table of Contents
 
