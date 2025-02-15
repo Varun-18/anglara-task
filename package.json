@@ -5,7 +5,7 @@
   "main": "/src/index.ts",
   "scripts": {
     "dev": "nodemon",
-    "build": "rimraf api && tsc && tsc-alias && npm run copyfiles",
+    "build": "tsc && tsc-alias && npm run copyfiles",
     "copyfiles": "copyfiles -O -u 1 src/views/**/* api",
     "lint": "prettier --write ./src &&  eslint ./src --fix",
     "start": "node api/index.js",
